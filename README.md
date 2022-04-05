@@ -8,6 +8,7 @@ Build a microVM from a container image
 
 * A bare-metal Linux host
 * Or a VM that supports nested virtualisation such as on [DigitalOcean](https://m.do.co/c/8d4e75e9886f) or GCP. 
+* Docker installed
 
 Browse:
 
@@ -64,3 +65,14 @@ Edit Makefile, and change `arch` to `aarch64`
 export arch="x86_64"
 ```
 
+## Live-event - A cracking time with Richard Case of Weaveworks
+
+[Richard Case](https://twitter.com/fruit_case) will join me as we explain to you why we're so excited about Firecracker, what use-cases we see and try to show you a little of what can be done with it. Richard's been at the sharp end of this technology for months, and is working on a cutting edge bare-metal Kubernetes project called Liquid Metal.
+
+[![Live stream](https://img.youtube.com/vi/CYCsa5e2vqg/hqdefault.jpg)](https://www.youtube.com/watch?v=CYCsa5e2vqg)
+
+> You'll hear more about it on Friday lunch at 12:00pm BST.
+
+[Subscribe & remind](https://www.youtube.com/watch?v=CYCsa5e2vqg)
+
+If you can't make it live, then you'll be able to jump onto the replay with your morning coffee.
