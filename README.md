@@ -44,8 +44,8 @@ make boot
 Play around in the first terminal and explore the system:
 
 ```bash
-free -h
-lscpu
+free -m
+cat /proc/cpuinfo
 ip addr
 ip route
 

@@ -1,19 +1,19 @@
-.PHONY: init root all start boot extract image
+.PHONY: init-local root all start boot extract image
 
-all: init root extract image
+all: root extract image
 
 export arch="x86_64"
 
-init:
+init-local:
 	cd init && \
 	go build --tags netgo --ldflags '-s -w -extldflags "-lm -lstdc++ -static"' -o init main.go
+
+root:
+	docker build -t alexellis2/custom-init .
 
 kernel:
 	curl -o vmlinux -S -L "https://s3.amazonaws.com/spec.ccfc.min/img/quickstart_guide/$(arch)/kernels/vmlinux.bin"
 	file ./vmlinux
-
-root:
-	docker build -t alexellis2/custom-init .
 
 extract:
 	docker rm -f extract || :

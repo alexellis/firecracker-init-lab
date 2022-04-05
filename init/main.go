@@ -16,7 +16,7 @@ const paths = "PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 // main starts an init process that can prepare an environment and start a shell
 // after the Kernel has started.
 func main() {
-	fmt.Printf("Lab init booting\n")
+	fmt.Printf("Lab init booting\nCopyright Alex Ellis 2022, OpenFaaS Ltd\n")
 
 	mount("none", "/proc", "proc", 0)
 	mount("none", "/dev/pts", "devpts", 0)

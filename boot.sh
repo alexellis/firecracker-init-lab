@@ -15,7 +15,7 @@ sudo curl -X PUT \
     -H content-type:application/json \
     -d '{
         "iface_id": "eth0",
-        "host_dev_name": "ftap00"
+        "host_dev_name": "ftap0"
     }'
 
 sudo curl --unix-socket /tmp/firecracker.socket -i \
