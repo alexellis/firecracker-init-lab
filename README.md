@@ -4,7 +4,8 @@ Build a Firecracker microVM from a container image, starting a custom Go init pr
 
 ## Pre-reqs
 
-A bare-metal Linux host, or a VM that supports nested virtualisation. Try GCP / DigitalOcean for the later. 
+* A bare-metal Linux host
+* Or a VM that supports nested virtualisation such as on [DigitalOcean](https://m.do.co/c/8d4e75e9886f) or GCP. 
 
 Browse:
 
@@ -15,9 +16,9 @@ Browse:
 
 ## Usage
 
-Download and install [Firecracker](https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0) to /usr/local/bin/
+Download and install [Firecracker](https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0) to `/usr/local/bin/`
 
-Create ftap0:
+Create ftap0 and masquerading with iptables:
 
 ```bash
 ./setup-networking.sh
