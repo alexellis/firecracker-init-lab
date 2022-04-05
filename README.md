@@ -2,6 +2,8 @@
 
 Build a Firecracker microVM from a container image, starting a custom Go init process.
 
+This lab extends [the official quickstart](https://github.com/firecracker-microvm/firecracker/blob/main/docs/getting-started.md) so that you can explore what an init process does, and add networking.
+
 ## Pre-reqs
 
 * A bare-metal Linux host
