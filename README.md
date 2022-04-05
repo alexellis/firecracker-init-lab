@@ -2,6 +2,10 @@
 
 Build a Firecracker microVM from a container image, starting a custom Go init process.
 
+## Pre-reqs
+
+A bare-metal Linux host, or a VM that supports nested virtualisation. Try GCP / DigitalOcean for the later. 
+
 Browse:
 
 * [Go init process](/init/main.go)
@@ -10,6 +14,8 @@ Browse:
 * [Dockerfile](/Dockerfile) - for building the root filesystem
 
 ## Usage
+
+Download and install [Firecracker](https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0) to /usr/local/bin/
 
 Create ftap0:
 
@@ -45,5 +51,13 @@ ip route
 
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 ping google.com
+```
+
+## Running on a Raspberry Pi
+
+Edit Makefile, and change `arch` to `aarch64`
+
+```Makefile
+export arch="x86_64"
 ```
 
