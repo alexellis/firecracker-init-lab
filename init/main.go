@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 
@@ -15,7 +16,7 @@ const paths = "PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 // main starts an init process that can prepare an environment and start a shell
 // after the Kernel has started.
 func main() {
-	fmt.Printf("Krakow init booting\n")
+	fmt.Printf("Lab init booting\n")
 
 	mount("none", "/proc", "proc", 0)
 	mount("none", "/dev/pts", "devpts", 0)
@@ -24,9 +25,9 @@ func main() {
 	mount("none", "/sys", "sysfs", 0)
 	mount("none", "/sys/fs/cgroup", "cgroup", 0)
 
-	setHostname("krakow-vm")
+	setHostname("lab-vm")
 
-	fmt.Printf("Krakow starting /bin/sh\n")
+	fmt.Printf("Lab starting /bin/sh\n")
 
 	cmd := exec.Command("/bin/sh")
 
@@ -64,6 +65,6 @@ func mount(source, target, filesystemtype string, flags uintptr) {
 
 	err := syscall.Mount(source, target, filesystemtype, flags, "")
 	if err != nil {
-		panic(err)
+		log.Printf("%s", fmt.Errorf("error mounting %s to %s, error: %s", source, target, err))
 	}
 }
