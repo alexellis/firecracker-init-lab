@@ -4,6 +4,8 @@ all: root extract image
 
 export arch="x86_64"
 
+# init-local builds a static binary for local testing, but the lab uses a multi-stage
+# Dockerfile for this instead - https://docs.docker.com/develop/develop-images/multistage-build/
 init-local:
 	cd init && \
 	go build --tags netgo --ldflags '-s -w -extldflags "-lm -lstdc++ -static"' -o init main.go
@@ -11,10 +13,13 @@ init-local:
 root:
 	docker build -t alexellis2/custom-init .
 
+# Get the AWS sample image
+# change to Image when using aarch64, instead of vmlinux.bin
 kernel:
 	curl -o vmlinux -S -L "https://s3.amazonaws.com/spec.ccfc.min/img/quickstart_guide/$(arch)/kernels/vmlinux.bin"
 	file ./vmlinux
 
+# Extract a root filesystem into a tar
 extract:
 	docker rm -f extract || :
 	rm -rf rootfs.tar || :
@@ -22,6 +27,8 @@ extract:
 	docker export extract -o rootfs.tar
 	docker rm -f extract
 
+# Allocate a 5GB disk image, then extract the rootfs.tar from the 
+# container into it
 image:
 	set -e 
 	rm -rf rootfs.img || : ;\
@@ -33,9 +40,11 @@ image:
 	sudo tar -xvf rootfs.tar -C $$TMP  ;\
 	sudo umount $$TMP
 
+# Start a firecracker process, ready for commands
 start:
 	sudo rm -f /tmp/firecracker.socket || :
 	sudo firecracker --api-sock /tmp/firecracker.socket
 
+# Sends commands to boot the firecracker process started via "make start"
 boot:
 	 sudo ./boot.sh
