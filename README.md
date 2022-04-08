@@ -53,8 +53,10 @@ cat /proc/cpuinfo
 ip addr
 ip route
 
+ping -c1 1.1.1.1
+
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
-ping google.com
+ping -c1 google.com
 ```
 
 ## Running on a Raspberry Pi
