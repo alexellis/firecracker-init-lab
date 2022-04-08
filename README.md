@@ -57,6 +57,10 @@ ping -c1 1.1.1.1
 
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 ping -c1 google.com
+
+apk add --no-cache curl
+
+curl -i https://inlets.dev
 ```
 
 ## Running on a Raspberry Pi

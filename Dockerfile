@@ -6,7 +6,7 @@ COPY init .
 
 RUN go build --tags netgo --ldflags '-s -w -extldflags "-lm -lstdc++ -static"' -o init main.go
 
-FROM alpine:3.5
+FROM alpine:3.15
 
 COPY --from=build /go/src/github.com/alexellis/firecracker-init-lab/init/init /init
 
