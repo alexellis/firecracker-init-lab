@@ -6,7 +6,7 @@ Build a microVM from a container image
 
 ## Pre-reqs
 
-* A bare-metal Linux host
+* A bare-metal Linux host - [where can you get bare metal?](https://github.com/alexellis/awesome-baremetal#bare-metal-cloud)
 * Or a VM that supports nested virtualisation such as on [DigitalOcean](https://m.do.co/c/8d4e75e9886f) or GCP. 
 * Docker installed
 
