@@ -19,12 +19,25 @@ Browse:
 
 ## Usage
 
-Download and install [Firecracker](https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0) to `/usr/local/bin/`
+Download and install [Firecracker](https://github.com/firecracker-microvm/firecracker/releases) to `/usr/local/bin/`
+
+Or, alternatively, [Arkade](https://arkade.dev) can do this for you with:
+
+```
+curl -SLs https://get.arkade.dev | sudo sh
+sudo arkade system install firecracker
+```
 
 Create ftap0 and masquerading with iptables:
 
 ```bash
 ./setup-networking.sh
+```
+
+Download the quickstart Kernel:
+
+```
+make kernel
 ```
 
 Make the init process binary, and package it into a container, extract the container into a rootfs image:
