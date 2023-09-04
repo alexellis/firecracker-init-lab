@@ -7,8 +7,13 @@ COPY init .
 RUN go build --tags netgo --ldflags '-s -w -extldflags "-lm -lstdc++ -static"' -o init main.go
 
 FROM alpine:3.18
+WORKDIR /root/
 
-RUN apk add --no-cache curl ca-certificates htop
+RUN apk add --no-cache curl && \
+  curl -SLs https://get.arkade.dev | sh && \
+  arkade get inlets-pro && \
+  chmod +x .arkade/bin/inlets-pro && \
+  mv .arkade/bin/inlets-pro /usr/local/bin/
 
 COPY --from=build /go/src/github.com/alexellis/firecracker-init-lab/init/init /init
 

@@ -18,7 +18,7 @@ ip addr show dev ftap0
 # Change IFNAME to match your main ethernet adapter, the one that
 # accesses the Internet - check "ip addr" or "ifconfig" if you don't 
 # know which one to use.
-IFNAME=enp7s0
+IFNAME=enp8s0
 
 # Enable IP forwarding
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"

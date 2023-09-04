@@ -28,7 +28,9 @@ curl -SLs https://get.arkade.dev | sudo sh
 sudo arkade system install firecracker
 ```
 
-Create ftap0 and masquerading with iptables:
+Edit the `IFNAME` in `setup-networking.sh` to match your host's network interface.
+
+Then run the script to create the ftap0 device, and to setup IP masquerading with iptables:
 
 ```bash
 ./setup-networking.sh
@@ -69,7 +71,7 @@ ip route
 ping -c1 1.1.1.1
 
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
-ping -c1 google.com
+ping -c 4 google.com
 
 apk add --no-cache curl
 
