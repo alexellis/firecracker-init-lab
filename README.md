@@ -95,3 +95,14 @@ export arch="x86_64"
 [Subscribe & remind](https://www.youtube.com/watch?v=CYCsa5e2vqg)
 
 If you can't make it live, then you'll be able to jump onto the replay with your morning coffee.
+
+## Faster, more secure CI with Firecracker and actuated
+
+We demoed actuated for fast and secure CI with Firecracker, since then it's being used in production and has launched over 100k VMs so far.
+
+Read more on the website, on the blog or in the docs at: [actuated.dev](https://actuated.dev).
+
+Watch a demo:
+
+* [Actuated for GitHub Actions](https://youtu.be/2o28iUC-J1w?si=FfDcnwemqWPWaDvF)
+* [Acuated for GitLab CI](https://www.youtube.com/watch?v=PybSPduDT6s)
