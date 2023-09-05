@@ -78,6 +78,13 @@ apk add --no-cache curl
 curl -i https://inlets.dev
 ```
 
+## Expose a TCP or HTTP service to the Internet
+
+Once you've got something interesting running like a HTTP server, or an SSHD daemon, you can then get ingress from the public Internet using an [inlets tunnel](https://inlets.dev). Inlets is a static binary, and there are a couple of simple tutorials you can follow depending on what you want to expose.
+
+* [HTTPS tunnel with Let's Encrypt](https://docs.inlets.dev/tutorial/automated-http-server/)
+* [TCP tunnel for SSH, reverse proxy etc](https://docs.inlets.dev/tutorial/ssh-tcp-tunnel/)
+
 ## Running on a Raspberry Pi
 
 Edit Makefile, and change `arch` to `aarch64`
