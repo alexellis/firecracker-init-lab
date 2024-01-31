@@ -14,7 +14,7 @@ sudo curl --unix-socket /tmp/firecracker.socket -i \
             \"boot_args\": \"console=ttyS0 reboot=k panic=1 pci=off init=/init ip=172.16.0.2::172.16.0.1:255.255.255.0::eth0:off\" 
        }"
        
-# Configure a network device, notice the host_dev_name macthes what 
+# Configure a network device, notice the host_dev_name matches what
 # we set in setup_networking.sh
 
 sudo curl -X PUT \

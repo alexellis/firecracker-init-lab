@@ -28,7 +28,10 @@ curl -SLs https://get.arkade.dev | sudo sh
 sudo arkade system install firecracker
 ```
 
-Edit the `IFNAME` in `setup-networking.sh` to match your host's network interface.
+Edit the `IFNAME` in `setup-networking.sh` to match your host's network interface. If you
+have trouble identifying which one to use, look for the interface with both "inet" and "ether",
+not just "ether", since you need to be able forward packets from the tap interface to the
+internet.
 
 Then run the script to create the ftap0 device, and to setup IP masquerading with iptables:
 

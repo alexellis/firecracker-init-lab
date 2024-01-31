@@ -17,7 +17,9 @@ ip addr show dev ftap0
 
 # Change IFNAME to match your main ethernet adapter, the one that
 # accesses the Internet - check "ip addr" or "ifconfig" if you don't 
-# know which one to use.
+# know which one to use. It will be the one with both "inet" and
+# "ether", not the one with just "ether", since it needs to forward
+# packets to the internet.
 IFNAME=enp8s0
 
 # Enable IP forwarding
