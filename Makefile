@@ -16,7 +16,7 @@ root:
 # Get the AWS sample image
 # change to Image when using aarch64, instead of vmlinux.bin
 kernel:
-	curl -o vmlinux -S -L "https://s3.amazonaws.com/spec.ccfc.min/img/quickstart_guide/$(arch)/kernels/vmlinux.bin"
+	curl -o vmlinux -S -L "https://s3.amazonaws.com/spec.ccfc.min/firecracker-ci/v1.10/$(arch)/vmlinux-5.10.223"
 	file ./vmlinux
 
 # Extract a root filesystem into a tar
