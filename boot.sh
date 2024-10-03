@@ -13,8 +13,19 @@ sudo curl --unix-socket /tmp/firecracker.socket -i \
             \"kernel_image_path\": \"./vmlinux\", 
             \"boot_args\": \"console=ttyS0 reboot=k panic=1 pci=off init=/init ip=172.16.0.2::172.16.0.1:255.255.255.0::eth0:off\" 
        }"
+
+# Configure memory and vCPUs
+sudo curl --unix-socket /tmp/firecracker.socket -i \
+    -X PUT 'http://localhost/machine-config' \
+    -H 'Accept: application/json'           \
+    -H 'Content-Type: application/json'     \
+    -d '{
+        "vcpu_count": 1,
+        "mem_size_mib": 1024
+    }'
+
        
-# Configure a network device, notice the host_dev_name macthes what 
+# Configure a network device, notice the host_dev_name matches what 
 # we set in setup_networking.sh
 
 sudo curl -X PUT \
