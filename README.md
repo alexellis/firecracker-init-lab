@@ -43,6 +43,13 @@ Download the quickstart Kernel:
 make kernel
 ```
 
+Check the Kernel is the correct architecture:
+
+```bash
+file ./vmlinux
+```
+If you don't have the `file` utility, you can add it with `sudo apt install -qy file`
+
 Make the init process binary, and package it into a container, extract the container into a rootfs image:
 
 ```bash
