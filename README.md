@@ -15,6 +15,7 @@ Browse:
 * [Go init process](/init/main.go)
 * [Makefile](/Makefile)
 * [boot.sh](/boot.sh) - commands to start MicroVM
+* [setup-networking.sh](./setup-networking.sh) - configure a tap adapter, IP forwarding and IP masquerading
 * [Dockerfile](/Dockerfile) - for building the root filesystem
 
 ## Usage
