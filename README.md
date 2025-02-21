@@ -101,6 +101,36 @@ Edit Makefile, and change `arch` to `aarch64`
 export arch="x86_64"
 ```
 
+## Snapshot and restore
+
+There is experimental support for snapshot and restore in Firecracker. You will not be able to snapshot on an Intel host and restore on an AMD one, and different generations of CPUs may also be incompatible for snapshot and restore.
+
+You can read more about the current status of snapshot and restore in the [Firecracker docs](https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md)
+
+Run the lab and boot the VM as per the instructions above.
+
+Now, verify the network is up with `ping -c 1 172.16.0.2`
+
+```bash
+make pause
+make snapshot
+```
+
+Kill the Firecracker process, and then restore the snapshot:
+
+```bash
+make start
+```
+
+In another terminal, restore the snapshot:
+
+```bash
+make restore
+make resume
+```
+
+Run `./setup-networking.sh` again and verify the network is up with `ping -c 1 172.16.0.2`.
+
 ## Live-event - A cracking time with Richard Case of Weaveworks
 
 [Richard Case](https://twitter.com/fruit_case) will join me as we explain to you why we're so excited about Firecracker, what use-cases we see and try to show you a little of what can be done with it. Richard's been at the sharp end of this technology for months, and is working on a cutting edge bare-metal Kubernetes project called Liquid Metal.

@@ -18,12 +18,26 @@ ip addr show dev ftap0
 # Change IFNAME to match your main ethernet adapter, the one that
 # accesses the Internet - check "ip addr" or "ifconfig" if you don't 
 # know which one to use.
-IFNAME=enp8s0
+IFNAME=wlp1s0
 
 # Enable IP forwarding
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 
 # Enable masquerading / NAT - https://tldp.org/HOWTO/IP-Masquerade-HOWTO/ipmasq-background2.5.html
-sudo iptables -t nat -A POSTROUTING -o $IFNAME -j MASQUERADE
-sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-sudo iptables -A FORWARD -i ftap0 -o $IFNAME -j ACCEPT
+
+
+# use iptables-save to verify if any of the rules have been added
+# Then, skip if they have been added
+
+if ! sudo iptables-save | grep "POSTROUTING -o $IFNAME -j MASQUERADE" > /dev/null 2>&1; then
+
+    echo "Adding masquerading rules"
+    
+    sudo iptables -t nat -A POSTROUTING -o $IFNAME -j MASQUERADE
+    sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+    sudo iptables -A FORWARD -i ftap0 -o $IFNAME -j ACCEPT
+
+else
+    echo "Masquerading rules already exist"
+fi
+

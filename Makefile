@@ -13,6 +13,42 @@ init-local:
 root:
 	docker build -t alexellis2/custom-init .
 
+pause:
+	sudo curl --unix-socket /tmp/firecracker.socket -i \
+		-X PATCH 'http://localhost/vm' \
+		-H 'Accept: application/json'           \
+		-H 'Content-Type: application/json'     \
+		-d '{"state": "Paused"}'
+
+snapshot:
+	sudo curl --unix-socket /tmp/firecracker.socket -i \
+		-X PUT 'http://localhost/snapshot/create' \
+		-H  'Accept: application/json' \
+		-H  'Content-Type: application/json' \
+		-d '{"snapshot_type": "Full", "snapshot_path": "./snapshot_file", "mem_file_path": "./mem_file"}'
+
+resume:
+	sudo curl --unix-socket /tmp/firecracker.socket -i \
+		-X PATCH 'http://localhost/vm' \
+		-H 'Accept: application/json'           \
+		-H 'Content-Type: application/json'     \
+		-d '{"state": "Resumed"}'
+
+restore:
+	sudo curl --unix-socket /tmp/firecracker.socket -i \
+		-X PUT 'http://localhost/snapshot/load' \
+		-H  'Accept: application/json' \
+		-H  'Content-Type: application/json' \
+    -d "{ \
+            \"snapshot_path\": \"./snapshot_file\", \
+            \"mem_backend\": { \
+                \"backend_path\": \"./mem_file\", \
+                \"backend_type\": \"File\" \
+            }, \
+            \"enable_diff_snapshots\": true, \
+            \"resume_vm\": false \
+        }"
+
 # Get the AWS sample image
 # change to Image when using aarch64, instead of vmlinux.bin
 kernel:

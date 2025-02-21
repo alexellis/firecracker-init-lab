@@ -2,3 +2,5 @@
 /vmlinux
 /init/init
 /root*
+/snapshot_file
+/mem_file
