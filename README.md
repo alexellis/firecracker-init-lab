@@ -143,6 +143,16 @@ Run `./setup-networking.sh` again and verify the network is up with `ping -c 1 1
 
 If you can't make it live, then you'll be able to jump onto the replay with your morning coffee.
 
+# Our real life applications of Firecracker
+
+Why do I know so much about Firecracker, microVMs and low-level primitives? We've built a couple of products at OpenFaaS Ltd that integrate with it precisely and efficiently to do things that containers cannot.
+
+## Slicer - Firecracker via API, or long lived servers
+
+[SlicerVM.com](https://slicervm.com) was developed as an internal tool for running several or several dozen microVMs with Linux preinstalled on bare-metal, booting in 1-2s. At [openfaas.com](https://openfaas.com) we often need to re-create customer environments to reproduce bugs, write up reference architectures, and to test our own work - either with Kubernetes layered on top or simply with a normal vanilla OS like Ubuntu or Rocky Linux.
+
+As a result, Slicer is the quickest, best supported, and most user-friendly way to run microVMs on bare-metal machines or cloud VMs using nested virt.
+
 ## Faster, more secure CI with Firecracker and actuated
 
 We demoed actuated for fast and secure CI with Firecracker, since then it's being used in production and has launched over 100k VMs so far.
